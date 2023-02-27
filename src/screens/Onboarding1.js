@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React , { useEffect, useState} from 'react'
 
 const Onboarding1 = ({navigation}) => {
-  const [interrupt,setInterrupt] = useState(true)
+  const [interrupt,setInterrupt] = useState(false)
  useEffect(()=>{
   if(!interrupt){
     setTimeout(()=>{
@@ -12,7 +12,7 @@ const Onboarding1 = ({navigation}) => {
  },[])
 
  const onClick=()=>{
-  setInterrupt(false)
+  setInterrupt(true)
     navigation.navigate('Onboarding2')
   
  }

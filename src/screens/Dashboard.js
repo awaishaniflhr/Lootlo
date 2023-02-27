@@ -5,34 +5,46 @@ import React, {useState} from 'react'
 
 const DATA = [
       {
-        name: "Iida Niskanen",
-        email: "iida.niskanen@gmail.com",
-        position: "Sales Manager",
-        photo: "../../assets/object.png"
+        id: '01',
+        title: 'Second Item',
+        img:require('../../assets/object.png'),
+        txt:'Hungery Station'
     },
     {
       id: '02',
       title: 'Second Item',
+      img:require('../../assets/object.png'),
+      txt:'Hungery Station'
     },
     {
       id: '03',
       title: 'Third Item',
+      img:require('../../assets/object.png'),
+      txt:'Hungery Station'
     },
     {
       id: '04',
       title: 'Fourth Item',
+      img:require('../../assets/object.png'),
+      txt:'Hungery Station'
     },
   ];
 
-  const Item = ({title}) => (
+ 
+
+const Dashboard = ({navigation,item}) => {
+  const Item = ({title,item}) => (
     <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-      <Image source={require('../../assets/object.png')}  style={{height:80, width:80}}></Image>
+     
+      <Image source={item.img} style={{height:80, width:80}}/>
+      <View style={{padding:20}}> 
+
+      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.title}>{item.txt}</Text>
+      </View>
+
     </View>
   );
-
-const Dashboard = ({navigation}) => {
-
 
   return (
     <View style={styles.signinContainer}>
@@ -73,10 +85,10 @@ const Dashboard = ({navigation}) => {
             <Text style={styles.signinTitle}>Nearby Place</Text>
                 <FlatList
                     data={DATA}
-                    renderItem={({item}) => <Item title={item.name} />}
+                    renderItem={Item}
                     // renderItem={({item}) => <Item title={item.email} />}
                     keyExtractor={item => item.id}
-                    Image source={require("../../assets/object.png")} 
+                    // Image source={require("../../assets/object.png")} 
                 />
             </SafeAreaView>
 
@@ -157,8 +169,10 @@ const styles = StyleSheet.create({
         padding: 20,
         marginVertical: 8,
         borderRadius:15,
+        flexDirection:'row'
       },
       title: {
-        fontSize: 32,
+        fontSize: 18,
+        color:'#000'
       },
 })
